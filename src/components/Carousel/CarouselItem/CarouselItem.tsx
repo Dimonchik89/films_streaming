@@ -8,6 +8,11 @@ interface Props {
 }
 
 const CarouselItem: React.FC<Props> = ({ movie }) => {
+  console.log(movie);
+
+  const releaseYear =
+    movie?.release_date?.split("-")[0] || movie?.first_air_date?.split("-")[0];
+
   return (
     <Link href={`/movie/${movie.id}`}>
       <div className="rounded-md overflow-hidden pb-1">
@@ -28,14 +33,11 @@ const CarouselItem: React.FC<Props> = ({ movie }) => {
         </div>
         <div className="mt-2">
           <h4 className="slider__dotted__text text-black-800 text-md font-semibold dark:text-blue-200">
-            {movie.title}
+            {movie?.title || movie?.name}
           </h4>
           <div className="flex flex-col mt-1">
             <span className="text-black-800 dark:text-white text-xs font-medium">
-              2023
-            </span>
-            <span className="text-black-800 dark:text-white text-xs font-medium">
-              драма
+              {releaseYear}
             </span>
           </div>
         </div>

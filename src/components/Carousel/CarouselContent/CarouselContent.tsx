@@ -48,7 +48,7 @@ const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
   }
 
   return (
-    <div className="flex items-center justify-between h-[284px] w-full">
+    <div className="flex items-center justify-between min-h-[296px] w-full">
       <button className="carousel__btn rotate-180" onClick={prevSlide}>
         <Image src="/icons/arrow.png" width="15" height="25" alt="arrow" />
       </button>
