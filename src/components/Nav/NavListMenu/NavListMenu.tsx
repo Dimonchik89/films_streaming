@@ -48,7 +48,7 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[36rem] overflow-visible lg:grid bd-white dark:bg-gray-800 border-none">
+        <MenuList className="hidden w-[36rem] overflow-visible lg:grid bd-white dark:bg-black-800 border-none">
           <ul className="grid grid-cols-4 gap-3 !border-none !outline-none hover:!outline-none">
             {renderItems}
           </ul>

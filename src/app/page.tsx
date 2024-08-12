@@ -1,4 +1,4 @@
-import { Layout } from "@/components";
+import { Carousel, Layout } from "@/components";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <Layout>
-      <h1>hello</h1>
-      {/* <MovieList /> */}
+      <Carousel />
     </Layout>
   );
 }

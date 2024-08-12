@@ -12,4 +12,4 @@ export { default as NavList } from "./Nav/NavList";
 export { default as NavListMenu } from "./Nav/NavListMenu";
 export { default as Navbar } from "./Navbar";
 export { default as Sidebar } from "./Sidebar";
-
+export { default as Carousel } from "./Carousel";
