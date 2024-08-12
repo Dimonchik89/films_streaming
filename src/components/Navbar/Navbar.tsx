@@ -1,7 +1,6 @@
 "use client";
 
-import { LANGUAGE } from "@/constants";
-import { fetchData, fetchLocalData } from "@/service/api";
+import { fetchLocalData } from "@/service/api";
 import { Genre } from "@/types/genre";
 import { ResponseGenre } from "@/types/response";
 import { Bars2Icon } from "@heroicons/react/24/solid";
@@ -20,18 +19,15 @@ function NavbarComponent() {
       {
         queryKey: ["movie", "genres"],
         queryFn: () =>
-          // fetchData<ResponseGenre<Genre[]>>(
-          //   `${process.env.NEXT_PUBLIC_BASE_URL}genre/movie/list?language=${LANGUAGE}`
-          // ),
           fetchLocalData<ResponseGenre<Genre[]>>(
-            `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/genre/movie`
+            `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/movie`
           ),
       },
       {
         queryKey: ["serials", "genres"],
         queryFn: () =>
-          fetchData<ResponseGenre<Genre[]>>(
-            `${process.env.NEXT_PUBLIC_BASE_URL}genre/tv/list?language=${LANGUAGE}`
+          fetchLocalData<ResponseGenre<Genre[]>>(
+            `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/tv`
           ),
       },
     ],

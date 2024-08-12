@@ -30,6 +30,11 @@ const config: Config = withMT({
       },
     },
   },
+  extends: {
+    backgroundImage: {
+      arrow: "url('/icons/arrow.png')",
+    },
+  },
   plugins: [],
 });
 export default config;

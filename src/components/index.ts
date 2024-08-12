@@ -13,3 +13,5 @@ export { default as NavListMenu } from "./Nav/NavListMenu";
 export { default as Navbar } from "./Navbar";
 export { default as Sidebar } from "./Sidebar";
 export { default as Carousel } from "./Carousel";
+export { default as Spinner } from "./Spinner";
+export { default as ErrorComponent } from "./ErrorComponent";
