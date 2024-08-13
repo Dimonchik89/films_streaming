@@ -1,3 +1,3 @@
-const LANGUAGE = 'uk-UA'
+const LANGUAGE = "uk-UA";
 
-export { LANGUAGE }
+export { LANGUAGE };

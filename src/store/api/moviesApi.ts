@@ -9,7 +9,7 @@ export const moviesApi = createApi({
   endpoints: (builder) => ({
     getMovieList: builder.query<Response<Movie[]>, string>({
       query: (url) => url,
-      providesTags: (response, error, url) => [{ type: "Slider", id: url }],
+      providesTags: (response, error, url) => [{ type: "Movie", id: url }],
     }),
   }),
 });

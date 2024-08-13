@@ -1,4 +1,4 @@
-import { Carousel, Layout } from "@/components";
+import { Carousel, Layout, MainContent } from "@/components";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <Layout>
       <Carousel />
+      <MainContent />
     </Layout>
   );
 }

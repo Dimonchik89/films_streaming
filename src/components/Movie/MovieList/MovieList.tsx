@@ -1,31 +1,34 @@
 "use client";
 
 import { LANGUAGE } from "@/constants";
-import fetchData from "@/service/api";
 import { Movie } from "@/types/movie";
 import { Response } from "@/types/response";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import MovieItem from "../MovieItem/MovieItem";
+import Link from "next/link";
+import Image from "next/image";
 
-const MovieList = () => {
-  const { data, isError, isLoading, error } = useQuery<Response<Movie[]>>({
-    queryKey: ["movies"],
-    queryFn: () =>
-      fetchData(
-        `${process.env.NEXT_PUBLIC_BASE_URL}movie/now_playing?language=${LANGUAGE}&page=1`
-      ),
-  });
+interface Props {
+  movies: Movie[];
+}
 
-  useEffect(() => {
-    console.log("data", data);
-  }, [data]);
-
-  const content = data?.results.map((item) => (
-    <MovieItem key={item.id} data={item} />
+const MovieList: React.FC<Props> = ({ movies }) => {
+  const content = movies?.map((item, i) => (
+    <Link href={`/movie/${item.id}`}>
+      <div>
+        <Image
+          src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+          alt={`${item.id}`}
+          width={140}
+          height={240}
+          priority
+        />
+      </div>
+    </Link>
   ));
 
-  return <div className="flex flex-col">{content}</div>;
+  return <div className="flex flex-wrap justify-between gap-3">{content}</div>;
 };
 
 export default MovieList;

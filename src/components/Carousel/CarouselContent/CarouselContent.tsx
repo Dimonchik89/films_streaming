@@ -4,25 +4,29 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { useQuery } from "@tanstack/react-query";
-import { fetchLocalData } from "../../../service/api";
-import { ResponseData } from "../../../types/response";
-import { Movie } from "../../../types/movie";
 import { CarouselItem } from "..";
 import { ErrorComponent, Spinner } from "../..";
+import { Movie } from "../../../types/movie";
+import { Response } from "../../../types/response";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit/react";
 
 import "swiper/css";
-import { useGetMovieListQuery } from "../../../store/api/moviesApi";
 
 interface Props {
-  currentCategory: string;
+  data: Response<Movie[]> | undefined;
+  isLoading: boolean;
+  isError: boolean;
+  error: FetchBaseQueryError | SerializedError;
 }
 
-const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
+const CarouselContent: React.FC<Props> = ({
+  data = { results: []},
+  error,
+  isError,
+  isLoading,
+}) => {
   const swiperRef = useRef<SwiperRef>(null);
-  const { data, isLoading, isError, error } = useGetMovieListQuery(
-    `api/trending/${currentCategory}?time=day`
-  );
 
   const nextSlide = () => {
     if (!swiperRef.current) return;
@@ -34,9 +38,9 @@ const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
     swiperRef.current.swiper.slidePrev();
   };
 
-  const content = data?.results.map((item) => (
+  const content = data?.results.map((item, i) => (
     <SwiperSlide key={item.id} className="!w-[140px]">
-      <CarouselItem movie={item} />
+      <CarouselItem movie={item} index={i} />
     </SwiperSlide>
   ));
 
@@ -45,7 +49,7 @@ const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
   }
 
   return (
-    <div className="flex items-center justify-between min-h-[296px] w-full">
+    <div className="flex items-center justify-between h-[266px] w-full">
       <button className="carousel__btn rotate-180" onClick={prevSlide}>
         <Image src="/icons/arrow.png" width="15" height="25" alt="arrow" />
       </button>
@@ -59,35 +63,8 @@ const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
           slidesPerView={"auto"}
           loop={true}
           className="max-w-[1200px]"
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          breakpoints={
-            {
-              // when window width is >= 480px
-              // 480: {
-              //   slidesPerView: 3,
-              //   // spaceBetween: 10,
-              //   slideToClickedSlide: true,
-              // },
-              // // when window width is >= 640px
-              // 640: {
-              //   slidesPerView: 4,
-              //   // spaceBetween: 10,
-              //   slideToClickedSlide: true,
-              // },
-              // 1024: {
-              //   slidesPerView: 6,
-              // },
-              // 1140: {
-              //   slidesPerView: 7,
-              // },
-              // 1320: {
-              //   slidesPerView: 8,
-              //   // spaceBetween: 10,
-              //   slideToClickedSlide: true,
-              // },
-            }
-          }
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
         >
           {content}
         </Swiper>

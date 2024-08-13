@@ -21,15 +21,22 @@ interface Props {
 const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  if (!subMenu) {
+    return <></>;
+  }
+
   const renderItems = subMenu?.map(({ id, name }) => (
-    <li key={id} className="!border-none !outline-none hover:!outline-none">
+    <MenuItem
+      key={id}
+      className="!border-none !outline-none hover:!outline-none"
+    >
       <Link
-        className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200"
+        className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200 capitalize"
         href={`${basePath}/${id}`}
       >
         {name}
       </Link>
-    </li>
+    </MenuItem>
   ));
 
   return (

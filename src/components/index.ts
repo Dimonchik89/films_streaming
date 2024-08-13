@@ -15,3 +15,5 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Carousel } from "./Carousel";
 export { default as Spinner } from "./Spinner";
 export { default as ErrorComponent } from "./ErrorComponent";
+export { default as MainContent } from "./MainContent";
+export { default as Movie } from "./Movie";

@@ -5,7 +5,11 @@ interface Props {
 }
 
 const Spinner: React.FC<Props> = ({ isLoading }) => {
-  return <div className={`loader ${isLoading ? "block" : "hidden"}`}></div>;
+  return (
+    <div className="flex justify-center w-full">
+      <div className={`loader ${isLoading ? "block" : "hidden"}`}></div>
+    </div>
+  );
 };
 
 export default Spinner;
