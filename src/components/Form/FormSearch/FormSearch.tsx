@@ -23,6 +23,9 @@ const FormSearch = () => {
     <form onSubmit={handleSubmit}>
       <div className="w-72">
         <Input
+          crossOrigin={null}
+          onPointerEnterCapture={null}
+          onPointerLeaveCapture={null}
           color="blue"
           label="Пошук фiльмiв i серiалiв"
           className="text-black-800 dark:text-white text-md"

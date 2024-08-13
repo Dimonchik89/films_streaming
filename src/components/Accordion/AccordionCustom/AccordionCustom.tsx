@@ -43,8 +43,21 @@ const AccordionCustom: React.FC<Props> = ({ title, subMenu, basePath }) => {
 
   return (
     <>
-      <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-        <AccordionHeader onClick={() => handleOpen(1)}>{title}</AccordionHeader>
+      <Accordion
+        open={open === 1}
+        icon={<Icon id={1} open={open} />}
+        onPointerEnterCapture={null}
+        onPointerLeaveCapture={null}
+        placeholder={null}
+      >
+        <AccordionHeader
+          onPointerEnterCapture={null}
+          onPointerLeaveCapture={null}
+          placeholder={null}
+          onClick={() => handleOpen(1)}
+        >
+          {title}
+        </AccordionHeader>
         <AccordionBody>
           <div className="flex flex-col gap-1">
             {subMenu?.map((el) => (

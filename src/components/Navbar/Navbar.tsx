@@ -37,7 +37,12 @@ function NavbarComponent() {
   const closeDrawer = () => setOpen(false);
 
   return (
-    <Navbar className="mx-auto !max-w-full p-3 lg:pl-6 bg-white dark:bg-gray-500 rounded-none border-none !px-0 relative z-10">
+    <Navbar
+      className="mx-auto !max-w-full p-3 lg:pl-6 bg-white dark:bg-gray-500 rounded-none border-none !px-0 relative z-10"
+      onPointerEnterCapture={null}
+      onPointerLeaveCapture={null}
+      placeholder={null}
+    >
       <Container>
         <div className="relative mx-auto flex flex-row items-center justify-between -mx-3">
           <div className="block">

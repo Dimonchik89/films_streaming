@@ -1,11 +1,5 @@
-"use client";
-
-import { LANGUAGE } from "@/constants";
 import { Movie } from "@/types/movie";
-import { Response } from "@/types/response";
-import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
-import MovieItem from "../MovieItem/MovieItem";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 

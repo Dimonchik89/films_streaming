@@ -27,6 +27,9 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
 
   const renderItems = subMenu?.map(({ id, name }) => (
     <MenuItem
+      onPointerEnterCapture={null}
+      onPointerLeaveCapture={null}
+      placeholder={null}
       key={id}
       className="!border-none !outline-none hover:!outline-none"
     >
@@ -43,8 +46,20 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
     <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
-          <Typography href="#" variant="small" className="font-normal">
-            <MenuItem className="items-center gap-2 font-medium text-blue-gray-900 flex lg:rounded-full text-black-800 font-bold text-md dark:text-white">
+          <Typography
+            href="#"
+            variant="small"
+            className="font-normal"
+            onPointerEnterCapture={null}
+            onPointerLeaveCapture={null}
+            placeholder={null}
+          >
+            <MenuItem
+              className="items-center gap-2 font-medium text-blue-gray-900 flex lg:rounded-full text-black-800 font-bold text-md dark:text-white"
+              onPointerEnterCapture={null}
+              onPointerLeaveCapture={null}
+              placeholder={null}
+            >
               {label}
               <ChevronDownIcon
                 strokeWidth={2}
@@ -55,7 +70,12 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[36rem] overflow-visible lg:grid bd-white dark:bg-black-800 border-none">
+        <MenuList
+          className="hidden w-[36rem] overflow-visible lg:grid bd-white dark:bg-black-800 border-none"
+          onPointerEnterCapture={null}
+          onPointerLeaveCapture={null}
+          placeholder={null}
+        >
           <ul className="grid grid-cols-4 gap-3 !border-none !outline-none hover:!outline-none">
             {renderItems}
           </ul>

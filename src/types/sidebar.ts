@@ -1,5 +1,5 @@
-export type Sidebar<T> = {
-    title: string,
-    basePath: string,
-    subMenu: T,
-}
+export type SidebarType<T> = {
+  title: string;
+  basePath: string;
+  subMenu: T;
+};
