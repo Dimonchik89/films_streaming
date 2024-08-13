@@ -8,30 +8,38 @@ import { Navbar } from "@material-tailwind/react";
 import { useQueries } from "@tanstack/react-query";
 import { useState } from "react";
 import { Container, FormSearch, NavList, Sidebar } from "..";
+import { useGetFilmsGenreQuery } from "../../store/api/genresApi";
 
 function NavbarComponent() {
   const [open, setOpen] = useState(false);
+  // const {
+  //   "0": { data: movieGenre, isLoading, isError },
+  //   "1": { data: seriesGenre },
+  // } = useQueries({
+  //   queries: [
+  //     {
+  //       queryKey: ["movie", "genres"],
+  //       queryFn: () =>
+  //         fetchLocalData<ResponseGenre<Genre[]>>(
+  //           `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/movie`
+  //         ),
+  //     },
+  //     {
+  //       queryKey: ["serials", "genres"],
+  //       queryFn: () =>
+  //         fetchLocalData<ResponseGenre<Genre[]>>(
+  //           `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/tv`
+  //         ),
+  //     },
+  //   ],
+  // });
   const {
-    "0": { data: movieGenre, isLoading, isError },
-    "1": { data: seriesGenre },
-  } = useQueries({
-    queries: [
-      {
-        queryKey: ["movie", "genres"],
-        queryFn: () =>
-          fetchLocalData<ResponseGenre<Genre[]>>(
-            `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/movie`
-          ),
-      },
-      {
-        queryKey: ["serials", "genres"],
-        queryFn: () =>
-          fetchLocalData<ResponseGenre<Genre[]>>(
-            `${process.env.NEXT_PUBLIC_LOCAL_URL}api/genre/tv`
-          ),
-      },
-    ],
-  });
+    data: movieGenre,
+    isLoading,
+    isError,
+    error,
+  } = useGetFilmsGenreQuery("api/genre/movie");
+  const { data: seriesGenre } = useGetFilmsGenreQuery("api/genre/tv");
 
   const sidebarContent = [
     {

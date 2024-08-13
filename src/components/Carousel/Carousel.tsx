@@ -16,6 +16,7 @@ const Carousel = () => {
       <Container>
         <CarouselHead
           handleChangeCurrentSlideCategory={handleChangeCurrentSlideCategory}
+          currentCategory={sliderCurrentCategory}
         />
         <CarouselContent currentCategory={sliderCurrentCategory} />
       </Container>

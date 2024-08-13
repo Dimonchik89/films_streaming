@@ -12,6 +12,7 @@ import { CarouselItem } from "..";
 import { ErrorComponent, Spinner } from "../..";
 
 import "swiper/css";
+import { useGetMovieListQuery } from "../../../store/api/moviesApi";
 
 interface Props {
   currentCategory: string;
@@ -19,13 +20,9 @@ interface Props {
 
 const CarouselContent: React.FC<Props> = ({ currentCategory }) => {
   const swiperRef = useRef<SwiperRef>(null);
-  const { data, isError, isLoading, error } = useQuery({
-    queryKey: ["swiper", currentCategory],
-    queryFn: () =>
-      fetchLocalData<ResponseData<Movie[]>>(
-        `${process.env.NEXT_PUBLIC_LOCAL_URL}api/trending/${currentCategory}?time=day`
-      ),
-  });
+  const { data, isLoading, isError, error } = useGetMovieListQuery(
+    `api/trending/${currentCategory}?time=day`
+  );
 
   const nextSlide = () => {
     if (!swiperRef.current) return;

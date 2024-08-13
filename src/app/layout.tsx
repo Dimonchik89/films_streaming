@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
-import {ThemeProvider} from '@material-tailwind/react';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import { ThemeProvider } from "@material-tailwind/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
 
 // import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
-import './globals.css';
+import { Inter } from "next/font/google";
+import "./globals.css";
+import store from "../store/store";
 
-const inter = Inter({subsets: ['latin']});
+const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -22,12 +24,14 @@ export default function RootLayout({
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      {/* <QueryClientProvider client={queryClient}> */}
       <ThemeProvider>
         <html lang="en">
           <body className={inter.className}>{children}</body>
         </html>
       </ThemeProvider>
-    </QueryClientProvider>
+      {/* </QueryClientProvider> */}
+    </Provider>
   );
 }

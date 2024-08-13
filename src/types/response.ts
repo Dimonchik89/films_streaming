@@ -1,5 +1,5 @@
 export type Response<T> = {
-  dates: {
+  dates?: {
     maximum: string;
     minimum: string;
   };
