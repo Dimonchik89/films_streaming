@@ -19,7 +19,7 @@ export default function Home() {
       <Container>
         <div className="flex mt-6 gap-3">
           <div className="w-full lg:w-2/3">
-            <MainContent lagreMovieContainer={false} />
+            <MainContent lagreMovieContainer={false} media_type="movie" />
           </div>
           <div className="hidden lg:block w-1/3">
             <Upcoming />

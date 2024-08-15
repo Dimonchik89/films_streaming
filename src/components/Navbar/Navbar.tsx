@@ -54,10 +54,7 @@ function NavbarComponent() {
             {!movieGenre || !seriesGenre ? (
               <></>
             ) : (
-              <NavList
-                movieGenre={movieGenre?.genres!}
-                seriesGenre={seriesGenre?.genres!}
-              />
+              <NavList sidebarContent={sidebarContent} />
             )}
 
             <Bars2Icon

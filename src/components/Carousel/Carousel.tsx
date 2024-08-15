@@ -35,7 +35,10 @@ const Carousel = () => {
               currentCategory={sliderCurrentCategory}
               disabled={isLoading}
             />
-            <CarouselContent data={data} />
+            <CarouselContent
+              data={data}
+              sliderCurrentCategory={sliderCurrentCategory}
+            />
           </>
         )}
       </Container>

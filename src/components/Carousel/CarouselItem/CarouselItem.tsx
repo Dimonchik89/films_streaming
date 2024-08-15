@@ -9,9 +9,14 @@ import { motion } from "framer-motion";
 interface Props {
   movie: Movie;
   index: number;
+  sliderCurrentCategory: "movie" | "tv";
 }
 
-const CarouselItem: React.FC<Props> = ({ movie, index = 0 }) => {
+const CarouselItem: React.FC<Props> = ({
+  movie,
+  index = 0,
+  sliderCurrentCategory,
+}) => {
   const releaseYear =
     movie?.release_date?.split("-")[0] || movie?.first_air_date?.split("-")[0];
 
@@ -21,7 +26,7 @@ const CarouselItem: React.FC<Props> = ({ movie, index = 0 }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 * index }}
     >
-      <Link href={`/movie/${movie.id}`}>
+      <Link href={`/${sliderCurrentCategory}/${movie.id}`}>
         <div className="rounded-md overflow-hidden pb-1">
           <div className="image__wrapper">
             <Image

@@ -12,6 +12,7 @@ interface Props {
   error: FetchBaseQueryError | SerializedError;
   total_pages: number;
   lagreMovieContainer: boolean;
+  media_type: "movie" | "tv";
 }
 
 const Movie: React.FC<Props> = ({
@@ -20,6 +21,7 @@ const Movie: React.FC<Props> = ({
   isError,
   isLoading,
   lagreMovieContainer,
+  media_type,
 }) => {
   if (isError) {
     return <ErrorComponent error={error} />;
@@ -35,6 +37,7 @@ const Movie: React.FC<Props> = ({
           <MovieList
             movies={data || []}
             lagreMovieContainer={lagreMovieContainer}
+            media_type={media_type}
           />
         </>
       )}

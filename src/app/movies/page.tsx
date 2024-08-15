@@ -6,7 +6,7 @@ const page = () => {
     <Layout>
       <Container>
         <div className="mt-5">Movies</div>
-        <MainContent lagreMovieContainer={true} />
+        <MainContent lagreMovieContainer={true} media_type="movie" />
       </Container>
     </Layout>
   );

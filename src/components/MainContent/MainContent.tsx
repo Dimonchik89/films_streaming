@@ -10,9 +10,10 @@ import { movieHeaderButtonsCategory } from "../../data/movieHeaderButtons";
 
 interface Props {
   lagreMovieContainer: boolean;
+  media_type: "movie" | "tv";
 }
 
-const MainContent: React.FC<Props> = ({ lagreMovieContainer }) => {
+const MainContent: React.FC<Props> = ({ lagreMovieContainer, media_type }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -21,7 +22,7 @@ const MainContent: React.FC<Props> = ({ lagreMovieContainer }) => {
   const page = searchParams.get("page") || 1;
 
   const { data, isLoading, isError, error } = useGetMovieListQuery(
-    `api/movie/${moviePath}?page=${page}`
+    `api/${media_type}/${moviePath}?page=${page}`
   );
 
   const handleOnChange = (pageValue: any) => {
@@ -43,6 +44,7 @@ const MainContent: React.FC<Props> = ({ lagreMovieContainer }) => {
         error={error!}
         total_pages={data?.total_pages || 1}
         lagreMovieContainer={lagreMovieContainer}
+        media_type={media_type}
       />
       <Pagination
         className="!bg-transparent mt-3 w-full"

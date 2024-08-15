@@ -9,9 +9,10 @@ import { normalizeDate } from "../../../service/helper";
 interface Props {
   data: Movie;
   index: number;
+  media_type: "movie" | "tv";
 }
 
-const MovieItem: React.FC<Props> = ({ data, index }) => {
+const MovieItem: React.FC<Props> = ({ data, index, media_type }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
@@ -19,7 +20,7 @@ const MovieItem: React.FC<Props> = ({ data, index }) => {
       transition={{ duration: 0.3, delay: 0.05 * index }}
       className="shadow-md rounded-md pb-2"
     >
-      <Link href={`/movie/${data.id}`} key={data.id}>
+      <Link href={`/${media_type}/${data.id}`} key={data.id}>
         <div>
           <div className="image__wrapper">
             <Image

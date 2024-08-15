@@ -9,7 +9,7 @@ const page = ({ params }: { params: { id: string } }) => {
   return (
     <Layout>
       <Container>
-        <CategoryMoviesContainer genreId={id} genre="movie" />
+        <CategoryMoviesContainer genreId={id} media_type="movie" />
       </Container>
       <div>Movie {id}</div>
     </Layout>

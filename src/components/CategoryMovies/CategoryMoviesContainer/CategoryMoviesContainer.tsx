@@ -8,17 +8,17 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 interface Props {
   genreId: string;
-  genre: "movie" | "tv";
+  media_type: "movie" | "tv";
 }
 
-const CategoryMoviesContainer: React.FC<Props> = ({ genreId, genre }) => {
+const CategoryMoviesContainer: React.FC<Props> = ({ genreId, media_type }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
   const page = searchParams.get("page") || 1;
 
   const { data, isLoading, isError, error } = useGetMovieListQuery(
-    `api/with_genres/discover/${genre}?with_genres=${genreId}&page=${page}`
+    `api/with_genres/discover/${media_type}?with_genres=${genreId}&page=${page}`
   );
 
   const handleOnChange = (pageValue: any) => {
@@ -40,6 +40,7 @@ const CategoryMoviesContainer: React.FC<Props> = ({ genreId, genre }) => {
               <MovieList
                 movies={data?.results || []}
                 lagreMovieContainer={true}
+                media_type={media_type}
               />
             </>
           )}

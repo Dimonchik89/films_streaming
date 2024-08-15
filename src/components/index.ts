@@ -18,3 +18,4 @@ export { default as ErrorComponent } from "./ErrorComponent";
 export { default as MainContent } from "./MainContent";
 export { default as Movie } from "./Movie";
 export { default as Upcoming } from "./Upcoming";
+export { default as SingleMovie } from "./SingleMovie";

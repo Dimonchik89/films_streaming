@@ -12,9 +12,13 @@ import "swiper/css";
 
 interface Props {
   data: Response<Movie[]> | undefined;
+  sliderCurrentCategory: "movie" | "tv";
 }
 
-const CarouselContent: React.FC<Props> = ({ data = { results: [] } }) => {
+const CarouselContent: React.FC<Props> = ({
+  data = { results: [] },
+  sliderCurrentCategory,
+}) => {
   const swiperRef = useRef<SwiperRef>(null);
 
   const nextSlide = () => {
@@ -29,7 +33,11 @@ const CarouselContent: React.FC<Props> = ({ data = { results: [] } }) => {
 
   const content = data?.results.map((item, i) => (
     <SwiperSlide key={item.id} className="!w-[140px]">
-      <CarouselItem movie={item} index={i} />
+      <CarouselItem
+        movie={item}
+        index={i}
+        sliderCurrentCategory={sliderCurrentCategory}
+      />
     </SwiperSlide>
   ));
 
