@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import store from "../store/store";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,14 +25,16 @@ export default function RootLayout({
   const queryClient = new QueryClient();
 
   return (
-    <Provider store={store}>
-      {/* <QueryClientProvider client={queryClient}> */}
-      <ThemeProvider>
-        <html lang="en">
-          <body className={inter.className}>{children}</body>
-        </html>
-      </ThemeProvider>
-      {/* </QueryClientProvider> */}
-    </Provider>
+    <Suspense>
+      <Provider store={store}>
+        {/* <QueryClientProvider client={queryClient}> */}
+        <ThemeProvider>
+          <html lang="en">
+            <body className={inter.className}>{children}</body>
+          </html>
+        </ThemeProvider>
+        {/* </QueryClientProvider> */}
+      </Provider>
+    </Suspense>
   );
 }

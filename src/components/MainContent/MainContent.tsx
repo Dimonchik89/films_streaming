@@ -35,31 +35,29 @@ const MainContent: React.FC<Props> = ({ lagreMovieContainer }) => {
   };
 
   return (
-    <Suspense>
-      <div className="min-h-screen h-full flex flex-col">
-        <Movie
-          data={data?.results || []}
-          isError={isError}
-          isLoading={isLoading}
-          error={error!}
-          total_pages={data?.total_pages || 1}
-          lagreMovieContainer={lagreMovieContainer}
-        />
-        <Pagination
-          className="!bg-transparent mt-3 w-full"
-          variant="text"
-          selectVariant="tab"
-          navigationVariant="icon"
-          pageWindowVariant="ellipsis"
-          color="primary"
-          indicatorColor="primary"
-          hideNavigation={true}
-          page={Number(searchParams.get("page")) || 1}
-          totalPages={data?.total_pages}
-          onChange={handleOnChange}
-        />
-      </div>
-    </Suspense>
+    <div className="min-h-screen h-full flex flex-col">
+      <Movie
+        data={data?.results || []}
+        isError={isError}
+        isLoading={isLoading}
+        error={error!}
+        total_pages={data?.total_pages || 1}
+        lagreMovieContainer={lagreMovieContainer}
+      />
+      <Pagination
+        className="!bg-transparent mt-3 w-full"
+        variant="text"
+        selectVariant="tab"
+        navigationVariant="icon"
+        pageWindowVariant="ellipsis"
+        color="primary"
+        indicatorColor="primary"
+        hideNavigation={true}
+        page={Number(searchParams.get("page")) || 1}
+        totalPages={data?.total_pages}
+        onChange={handleOnChange}
+      />
+    </div>
   );
 };
 
