@@ -43,7 +43,7 @@ const SingleMovieContent: React.FC<Props> = ({ movie, media_type }) => {
       </div>
       <div className="my-10 flex justify-center">
         <iframe
-          src={`${process.env.NEXT_PUBLIC_MOVIE_URL}${media_type}?tmdb=${movie.id}`}
+          src={`${process.env.NEXT_PUBLIC_MOVIE_URL}${media_type}?tmdb=${movie.id}&ds_lang=uk`}
           width={640}
           height={480}
           // frameborder="0"
