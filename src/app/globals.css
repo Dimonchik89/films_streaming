@@ -80,3 +80,11 @@
 .MuiTab-wrapper {
   @apply text-black-800 dark:text-white;
 }
+
+.no-scroll {
+  top: 0px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  overflow: hidden;
+}

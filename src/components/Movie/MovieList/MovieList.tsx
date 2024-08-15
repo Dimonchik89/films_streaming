@@ -9,7 +9,7 @@ interface Props {
 
 const MovieList: React.FC<Props> = ({ movies }) => {
   const content = movies?.map((item, i) => (
-    <Link href={`/movie/${item.id}`}>
+    <Link href={`/movie/${item.id}`} key={item.id}>
       <div>
         <Image
           src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}

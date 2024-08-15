@@ -55,10 +55,11 @@ const AccordionCustom: React.FC<Props> = ({ title, subMenu, basePath }) => {
           onPointerLeaveCapture={null}
           placeholder={null}
           onClick={() => handleOpen(1)}
+          className="text-sm py-2 lg:text-md lg:py-3"
         >
           {title}
         </AccordionHeader>
-        <AccordionBody>
+        <AccordionBody className="overflow-scroll">
           <div className="flex flex-col gap-1">
             {subMenu?.map((el) => (
               <AccordionCustomItem key={el.id} el={el} basePath={basePath} />

@@ -1,12 +1,8 @@
 "use client";
 
-import { fetchLocalData } from "@/service/api";
-import { Genre } from "@/types/genre";
-import { ResponseGenre } from "@/types/response";
 import { Bars2Icon } from "@heroicons/react/24/solid";
 import { Navbar } from "@material-tailwind/react";
-import { useQueries, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Container, FormSearch, NavList, Sidebar } from "..";
 import { useGetFilmsGenreQuery } from "../../store/api/genresApi";
 
@@ -19,6 +15,7 @@ function NavbarComponent() {
     error,
   } = useGetFilmsGenreQuery("api/genre/movie");
   const { data: seriesGenre } = useGetFilmsGenreQuery("api/genre/tv");
+  const ref = useRef<HTMLDivElement>(null);
 
   const sidebarContent = [
     {
@@ -33,8 +30,16 @@ function NavbarComponent() {
     },
   ];
 
-  const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+  const openDrawer = () => {
+    console.log(ref.current);
+
+    document.querySelector("body")?.classList.add("no-scroll");
+    setOpen(true);
+  };
+  const closeDrawer = () => {
+    document.querySelector("body")?.classList.remove("no-scroll");
+    setOpen(false);
+  };
 
   return (
     <Navbar
@@ -66,6 +71,7 @@ function NavbarComponent() {
         </div>
       </Container>
       <Sidebar
+        ref={ref}
         open={open}
         closeDrawer={closeDrawer}
         categories={sidebarContent}
