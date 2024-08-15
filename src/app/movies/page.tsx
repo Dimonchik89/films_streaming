@@ -1,10 +1,12 @@
 import React from "react";
-import { Layout, MainContent } from "../../components";
+import { Container, Layout, MainContent } from "../../components";
 
 const page = () => {
   return (
     <Layout>
-      <MainContent />
+      <Container>
+        <MainContent />
+      </Container>
     </Layout>
   );
 };

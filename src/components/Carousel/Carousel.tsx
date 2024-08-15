@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Container } from "..";
+import { Container, ErrorComponent, Spinner } from "..";
 import { CarouselContent, CarouselHead } from ".";
 import { useGetMovieListQuery } from "../../store/api/moviesApi";
 
@@ -17,20 +17,27 @@ const Carousel = () => {
     setSliderCurrentCategory(data);
   };
 
+  if (isError) {
+    return <ErrorComponent error={error} />;
+  }
+
   return (
     <div className="py-4">
       <Container>
-        <CarouselHead
-          handleChangeCurrentSlideCategory={handleChangeCurrentSlideCategory}
-          currentCategory={sliderCurrentCategory}
-          disabled={isLoading}
-        />
-        <CarouselContent
-          data={data}
-          isLoading={isLoading}
-          isError={isError}
-          error={error!}
-        />
+        {isLoading ? (
+          <Spinner isLoading={isLoading} />
+        ) : (
+          <>
+            <CarouselHead
+              handleChangeCurrentSlideCategory={
+                handleChangeCurrentSlideCategory
+              }
+              currentCategory={sliderCurrentCategory}
+              disabled={isLoading}
+            />
+            <CarouselContent data={data} />
+          </>
+        )}
       </Container>
     </div>
   );

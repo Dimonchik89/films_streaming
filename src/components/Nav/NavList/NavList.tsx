@@ -10,9 +10,9 @@ interface Props {
 const NavList: React.FC<Props> = ({ movieGenre, seriesGenre }) => {
   return (
     <ul className="hidden md:mt-2 mb-4 xl:flex gap-2 lg:mb-0 lg:mt-0 flex-row lg:items-center">
-      <NavListMenu label={"Фiльми"} basePath={"/movies"} subMenu={movieGenre} />
+      <NavListMenu label={"Movies"} basePath={"/movies"} subMenu={movieGenre} />
       <NavListMenu
-        label={"Серiали"}
+        label={"Tv Show"}
         basePath={"/series"}
         subMenu={seriesGenre}
       />

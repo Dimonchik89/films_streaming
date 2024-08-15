@@ -2,25 +2,29 @@
   @apply text-black-800 dark:text-blue-200 text-xs md:text-sm cursor-pointer;
 }
 
-.carousel__image__wrapper {
+.image__wrapper {
   @apply rounded-md overflow-hidden relative hover:before:opacity-40;
 }
 
-.carousel__image__wrapper::before {
+.image__wrapper::before {
   content: "";
   @apply absolute top-0 left-0 right-0 bottom-0 bg-blue-gray-600 opacity-0 duration-300;
 }
 
-.carousel__card__icon {
+.card__icon {
   @apply absolute top-1/2 left-1/2 opacity-0 -translate-x-1/2 -translate-y-1/2 duration-300;
 }
 
-.carousel__image__wrapper:hover .carousel__card__icon {
+.image__wrapper:hover .card__icon {
   @apply opacity-100;
 }
 
-.slider__dotted__text {
+.dotted__text {
   @apply text-ellipsis overflow-hidden w-36 whitespace-nowrap;
+}
+
+.dotted__text__long {
+  @apply text-ellipsis overflow-hidden w-48 whitespace-nowrap;
 }
 
 .carousel__btn {

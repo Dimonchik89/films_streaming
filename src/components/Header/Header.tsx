@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import {ButtonTheme, Container} from '..';
+import Link from "next/link";
+import { ButtonTheme, Container } from "..";
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
               пiдписатися
             </h2>
             <Link href="/">
-              <h2 className="text-gray-100 text-xl uppercase">logo</h2>
+              <h2 className="text-gray-100 text-xl uppercase">Only films</h2>
             </Link>
             <ButtonTheme />
           </div>

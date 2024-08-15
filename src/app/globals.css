@@ -88,3 +88,8 @@
   position: fixed;
   overflow: hidden;
 }
+
+.movie-container {
+  @apply grid gap-5;
+  grid-template-columns: repeat(auto-fit, minmax(166px, 1fr));
+}

@@ -27,7 +27,7 @@ const FormSearch = () => {
           onPointerEnterCapture={null}
           onPointerLeaveCapture={null}
           color="blue"
-          label="Пошук фiльмiв i серiалiв"
+          label="search for films and tv show"
           className="text-black-800 dark:text-white text-md"
           name="search"
         />

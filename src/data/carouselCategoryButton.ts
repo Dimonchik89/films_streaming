@@ -2,11 +2,11 @@ import { CarouselCategoryButton } from "../types/type";
 
 const carouselCategoryButtons: CarouselCategoryButton[] = [
   {
-    title: "Фiльми",
+    title: "Films",
     path: "movie",
   },
   {
-    title: "Серiали",
+    title: "Tv Show",
     path: "tv",
   },
 ];

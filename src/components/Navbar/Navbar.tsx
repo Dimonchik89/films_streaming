@@ -19,12 +19,12 @@ function NavbarComponent() {
 
   const sidebarContent = [
     {
-      title: "Фiльми",
+      title: "Movies",
       basePath: "/movies",
       subMenu: movieGenre?.genres!,
     },
     {
-      title: "Серiали",
+      title: "Tv Show",
       basePath: "/series",
       subMenu: seriesGenre?.genres!,
     },

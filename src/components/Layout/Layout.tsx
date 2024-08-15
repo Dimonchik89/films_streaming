@@ -19,7 +19,6 @@ const Layout: React.FC<Props> = ({ children, theme }) => {
         <Header />
         <Navbar />
       </>
-      {/* <div className={`flex-auto bg-white dark:bg-black-800`}>{children}</div> */}
       <div
         className={`flex-auto ${
           theme === "light" ? "layout__light" : "layout__dark"

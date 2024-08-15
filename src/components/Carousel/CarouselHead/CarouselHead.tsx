@@ -4,13 +4,13 @@ import { carouselCategoryButtons } from "../../../data/carouselCategoryButton";
 interface Props {
   handleChangeCurrentSlideCategory: (data: "movie" | "tv") => void;
   currentCategory: "movie" | "tv";
-  disabled: boolean
+  disabled: boolean;
 }
 
 const CarouselHead: React.FC<Props> = ({
   handleChangeCurrentSlideCategory,
   currentCategory,
-  disabled
+  disabled,
 }) => {
   const content = carouselCategoryButtons.map((item) => (
     <li
@@ -33,7 +33,7 @@ const CarouselHead: React.FC<Props> = ({
   return (
     <div className="flex items-center mb-4">
       <h2 className="text-black-800 dark:text-white text-md lg:text-lg font-bold">
-        Новинки:
+        New:
       </h2>
       <ul className="flex ml-3 lg:ml-5 gap-2 lg:gap-3">{content}</ul>
     </div>

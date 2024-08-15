@@ -10,4 +10,16 @@ const getCategoryMovieFromSearchParams = () => {
   return category;
 };
 
-export { getCategoryMovieFromSearchParams };
+const normalizeDate = (dateString: string = ""): string => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+
+  return formattedDate.replace(/,|\s/g, " ");
+};
+
+export { getCategoryMovieFromSearchParams, normalizeDate };

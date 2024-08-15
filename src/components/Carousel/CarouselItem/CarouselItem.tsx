@@ -23,7 +23,7 @@ const CarouselItem: React.FC<Props> = ({ movie, index = 0 }) => {
     >
       <Link href={`/movie/${movie.id}`}>
         <div className="rounded-md overflow-hidden pb-1">
-          <div className="carousel__image__wrapper">
+          <div className="image__wrapper">
             <Image
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={`${movie.id}`}
@@ -36,11 +36,11 @@ const CarouselItem: React.FC<Props> = ({ movie, index = 0 }) => {
               alt="play"
               width={50}
               height={50}
-              className="carousel__card__icon"
+              className="card__icon"
             />
           </div>
           <div className="mt-2">
-            <h4 className="slider__dotted__text text-black-800 text-md font-semibold dark:text-blue-200">
+            <h4 className="dotted__text text-black-800 text-md font-semibold dark:text-blue-200">
               {movie?.title || movie?.name}
             </h4>
             <div className="flex flex-col mt-1">
