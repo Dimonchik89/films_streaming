@@ -34,7 +34,9 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
       placeholder={null}
       key={id}
       className="!border-none !outline-none hover:!outline-none"
-      onClick={() => router.push(`${basePath}/${id}`)}
+      onClick={() => {
+        router.push(`${basePath}/${id}`);
+      }}
     >
       <p
         className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200 capitalize"

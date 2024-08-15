@@ -12,6 +12,9 @@ const AccordionCustomItem: React.FC<Props> = ({ el, basePath }) => {
       key={el.id}
       className="text-black-800 dark:text-white text-sm ml-2"
       href={`${basePath}/${el.id}`}
+      onClick={() => {
+        document.querySelector("body")?.classList.remove("no-scroll");
+      }}
     >
       {el.name}
     </Link>
