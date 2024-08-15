@@ -5,7 +5,8 @@ const page = () => {
   return (
     <Layout>
       <Container>
-        <MainContent />
+        <div className="mt-5"></div>
+        <MainContent lagreMovieContainer={true} />
       </Container>
     </Layout>
   );

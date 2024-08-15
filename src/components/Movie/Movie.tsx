@@ -1,19 +1,26 @@
 import React from "react";
 import { MovieHeader, MovieList } from ".";
 import { ErrorComponent, Spinner } from "..";
-import { Movie } from "../../types/movie";
+import { Movie as MovieType } from "../../types/movie";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 
 interface Props {
-  data: Movie[];
+  data: MovieType[];
   isLoading: boolean;
   isError: boolean;
   error: FetchBaseQueryError | SerializedError;
   total_pages: number;
+  lagreMovieContainer: boolean;
 }
 
-const Movie: React.FC<Props> = ({ data, error, isError, isLoading }) => {
+const Movie: React.FC<Props> = ({
+  data,
+  error,
+  isError,
+  isLoading,
+  lagreMovieContainer,
+}) => {
   if (isError) {
     return <ErrorComponent error={error} />;
   }
@@ -25,7 +32,10 @@ const Movie: React.FC<Props> = ({ data, error, isError, isLoading }) => {
       ) : (
         <>
           <MovieHeader />
-          <MovieList movies={data || []} />
+          <MovieList
+            movies={data || []}
+            lagreMovieContainer={lagreMovieContainer}
+          />
         </>
       )}
     </div>

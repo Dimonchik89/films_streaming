@@ -7,7 +7,7 @@ import { LANGUAGE } from "@/constants";
 export async function GET() {
   try {
     const response = await fetchData<ResponseGenre<Genre[]>>(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/genre/tv/list?language=${LANGUAGE}`
+      `genre/tv/list?language=${LANGUAGE}`
     );
     return NextResponse.json(response);
   } catch (error) {

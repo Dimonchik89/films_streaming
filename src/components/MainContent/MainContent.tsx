@@ -8,7 +8,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Pagination from "materialui-pagination-component";
 import { movieHeaderButtonsCategory } from "../../data/movieHeaderButtons";
 
-const MainContent = () => {
+interface Props {
+  lagreMovieContainer: boolean;
+}
+
+const MainContent: React.FC<Props> = ({ lagreMovieContainer }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -39,6 +43,7 @@ const MainContent = () => {
           isLoading={isLoading}
           error={error!}
           total_pages={data?.total_pages || 1}
+          lagreMovieContainer={lagreMovieContainer}
         />
         <Pagination
           className="!bg-transparent mt-3 w-full"

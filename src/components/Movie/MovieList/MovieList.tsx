@@ -6,14 +6,23 @@ import { MovieItem } from "..";
 
 interface Props {
   movies: Movie[];
+  lagreMovieContainer: boolean;
 }
 
-const MovieList: React.FC<Props> = ({ movies }) => {
+const MovieList: React.FC<Props> = ({ movies, lagreMovieContainer }) => {
   const content = movies?.map((item, i) => (
     <MovieItem key={item.id} data={item} index={i} />
   ));
 
-  return <div className="movie-container">{content}</div>;
+  return (
+    <div
+      className={
+        lagreMovieContainer ? "movie-container__lagre" : "movie-container"
+      }
+    >
+      {content}
+    </div>
+  );
 };
 
 export default MovieList;

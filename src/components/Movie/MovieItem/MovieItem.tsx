@@ -29,8 +29,8 @@ const MovieItem: React.FC<Props> = ({ data, index }) => {
                   : "/images/movie-placeholder.png"
               }
               alt={`${data.id}`}
-              width={200}
-              height={280}
+              width={400}
+              height={600}
               priority
             />
             <Image
