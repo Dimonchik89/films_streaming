@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface Props {
   label: string;
@@ -20,6 +21,7 @@ interface Props {
 
 const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const router = useRouter();
 
   if (!subMenu) {
     return <></>;
@@ -32,13 +34,14 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
       placeholder={null}
       key={id}
       className="!border-none !outline-none hover:!outline-none"
+      onClick={() => router.push(`${basePath}/${id}`)}
     >
-      <Link
+      <p
         className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200 capitalize"
-        href={`${basePath}/${id}`}
+        // href={`${basePath}/${id}`}
       >
         {name}
-      </Link>
+      </p>
     </MenuItem>
   ));
 

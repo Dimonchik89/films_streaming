@@ -1,4 +1,4 @@
-import { Layout, MainContent } from "@/components";
+import { Container, Layout, MainContent } from "@/components";
 import { CategoryMoviesContainer } from "../../../components/CategoryMovies";
 import { Suspense } from "react";
 
@@ -8,7 +8,9 @@ const page = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   return (
     <Layout>
-      <CategoryMoviesContainer genreId={id} />
+      <Container>
+        <CategoryMoviesContainer genreId={id} genre="movie" />
+      </Container>
       <div>Movie {id}</div>
     </Layout>
   );
