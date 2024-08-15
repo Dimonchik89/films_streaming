@@ -1,7 +1,7 @@
 "use client";
 
-import { PropsWithChildren, ReactNode } from "react";
-import { Footer, Header, Navbar } from "..";
+import { PropsWithChildren, ReactNode, Suspense } from "react";
+import { Footer, Header, Navbar, Spinner } from "..";
 import { theme } from "../../store/theme/selectors";
 import { createStructuredSelector } from "reselect";
 import { connect, ConnectedProps } from "react-redux";
@@ -14,20 +14,22 @@ interface Props extends Connector {
 
 const Layout: React.FC<Props> = ({ children, theme }) => {
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden">
-      <>
-        <Header />
-        <Navbar />
-      </>
-      <div
-        className={`flex-auto ${
-          theme === "light" ? "layout__light" : "layout__dark"
-        }`}
-      >
-        {children}
+    <Suspense fallback={<Spinner isLoading={true} />}>
+      <div className="flex flex-col min-h-screen overflow-hidden">
+        <>
+          <Header />
+          <Navbar />
+        </>
+        <div
+          className={`flex-auto ${
+            theme === "light" ? "layout__light" : "layout__dark"
+          }`}
+        >
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Suspense>
   );
 };
 

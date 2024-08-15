@@ -25,16 +25,12 @@ export default function RootLayout({
   const queryClient = new QueryClient();
 
   return (
-    <Suspense>
-      <Provider store={store}>
-        {/* <QueryClientProvider client={queryClient}> */}
-        <ThemeProvider>
-          <html lang="en">
-            <body className={inter.className}>{children}</body>
-          </html>
-        </ThemeProvider>
-        {/* </QueryClientProvider> */}
-      </Provider>
-    </Suspense>
+    <Provider store={store}>
+      <ThemeProvider>
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </ThemeProvider>
+    </Provider>
   );
 }
