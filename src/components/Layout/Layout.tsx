@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, ReactNode, Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 import { Footer, Header, Navbar, Spinner } from "..";
 import { theme } from "../../store/theme/selectors";
 import { createStructuredSelector } from "reselect";
@@ -9,8 +9,6 @@ import { connect, ConnectedProps } from "react-redux";
 interface Props extends Connector {
   children: ReactNode;
 }
-
-// interface Props extends PropsWithChildren {}
 
 const Layout: React.FC<Props> = ({ children, theme }) => {
   return (
@@ -21,7 +19,7 @@ const Layout: React.FC<Props> = ({ children, theme }) => {
           <Navbar />
         </>
         <div
-          className={`flex-auto ${
+          className={`flex-auto pb-5 ${
             theme === "light" ? "layout__light" : "layout__dark"
           }`}
         >

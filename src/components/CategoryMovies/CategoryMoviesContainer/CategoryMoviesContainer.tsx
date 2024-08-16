@@ -1,17 +1,24 @@
 "use client";
 
 import React from "react";
-import { Container, ErrorComponent, Movie, MovieList, Spinner } from "../..";
+import { ErrorComponent, MovieList, Spinner } from "../..";
 import { useGetMovieListQuery } from "../../../store/api/moviesApi";
 import Pagination from "materialui-pagination-component";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { currentMoviesCategory } from "../../../store/movieCategory/selectors";
+import { createStructuredSelector } from "reselect";
+import { connect, ConnectedProps } from "react-redux";
 
-interface Props {
+interface Props extends Connector {
   genreId: string;
   media_type: "movie" | "tv";
 }
 
-const CategoryMoviesContainer: React.FC<Props> = ({ genreId, media_type }) => {
+const CategoryMoviesContainer: React.FC<Props> = ({
+  genreId,
+  media_type,
+  currentMoviesCategory,
+}) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -33,6 +40,9 @@ const CategoryMoviesContainer: React.FC<Props> = ({ genreId, media_type }) => {
     <div className="mt-5">
       <div className="min-h-screen h-full flex flex-col">
         <div className="flex flex-col flex-[1_0_auto]">
+          <div className="text-center text-2xl font-bold text-black-800 dark:text-white mb-4">
+            {currentMoviesCategory}
+          </div>
           {isLoading ? (
             <Spinner isLoading={isLoading} />
           ) : (
@@ -55,7 +65,7 @@ const CategoryMoviesContainer: React.FC<Props> = ({ genreId, media_type }) => {
           indicatorColor="primary"
           hideNavigation={true}
           page={Number(searchParams.get("page")) || 1}
-          totalPages={data?.total_pages}
+          totalPages={data?.total_pages! <= 500 ? data?.total_pages : 500}
           onChange={handleOnChange}
         />
       </div>
@@ -63,4 +73,11 @@ const CategoryMoviesContainer: React.FC<Props> = ({ genreId, media_type }) => {
   );
 };
 
-export default CategoryMoviesContainer;
+const mapStateToProps = createStructuredSelector({
+  currentMoviesCategory,
+});
+
+const connector = connect(mapStateToProps);
+type Connector = ConnectedProps<typeof connector>;
+
+export default connector(CategoryMoviesContainer);

@@ -31,8 +31,6 @@ function NavbarComponent() {
   ];
 
   const openDrawer = () => {
-    console.log(ref.current);
-
     document.querySelector("body")?.classList.add("no-scroll");
     setOpen(true);
   };

@@ -19,3 +19,7 @@ export type ResponseData<T> = {
   total_pages: number;
   totalREsults: number;
 };
+
+export interface ResponseSearch<T> extends ResponseData<T> {
+  media_type: "movie" | "tv";
+}

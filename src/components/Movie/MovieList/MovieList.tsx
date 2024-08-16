@@ -1,7 +1,5 @@
 import { Movie } from "@/types/movie";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { MovieItem } from "..";
 
 interface Props {
@@ -21,9 +19,9 @@ const MovieList: React.FC<Props> = ({
 
   return (
     <div
-      className={
+      className={`${
         lagreMovieContainer ? "movie-container__lagre" : "movie-container"
-      }
+      } self-center sm:self-auto`}
     >
       {content}
     </div>

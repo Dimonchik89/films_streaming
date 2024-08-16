@@ -9,7 +9,7 @@ const MovieHeader: React.FC<Props> = () => {
     <MovieHeaderButton key={item.title} {...item} />
   ));
 
-  return <ul className="flex items-center gap-2 mb-5">{content}</ul>;
+  return <ul className="flex items-center gap-4 mb-5">{content}</ul>;
 };
 
 export default MovieHeader;

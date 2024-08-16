@@ -18,7 +18,7 @@ const MovieItem: React.FC<Props> = ({ data, index, media_type }) => {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: 0.05 * index }}
-      className="shadow-md rounded-md pb-2"
+      className="shadow-md rounded-md pb-2 max-w-[241px]"
     >
       <Link href={`/${media_type}/${data.id}`} key={data.id}>
         <div>
@@ -32,7 +32,7 @@ const MovieItem: React.FC<Props> = ({ data, index, media_type }) => {
               alt={`${data.id}`}
               width={400}
               height={600}
-              priority
+              style={{ objectFit: "cover" }}
             />
             <Image
               src={"/icons/play-circle.svg"}

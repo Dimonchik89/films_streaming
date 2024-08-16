@@ -14,8 +14,6 @@ const SingleMovie: React.FC<Props> = ({ id, media_type }) => {
     `api/one_movie/${media_type}/${id}`
   );
 
-  console.log("data", data);
-
   if (isError) {
     return <ErrorComponent error={error} />;
   }

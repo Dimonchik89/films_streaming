@@ -3,7 +3,7 @@
 }
 
 .image__wrapper {
-  @apply rounded-md overflow-hidden relative hover:before:opacity-40;
+  @apply rounded-md overflow-hidden relative hover:before:opacity-40 max-h-[342px];
 }
 
 .image__wrapper::before {

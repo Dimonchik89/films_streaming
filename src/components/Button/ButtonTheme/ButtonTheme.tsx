@@ -11,53 +11,6 @@ import { connect, ConnectedProps } from "react-redux";
 interface Props extends Connector {}
 
 const ButtonTheme: React.FC<Props> = ({ setTheme: setStorageTheme }) => {
-  // const getInitialTheme = () => {
-  //   if (typeof window !== "undefined" && window.localStorage) {
-  //     const storedPrefs = window.localStorage.getItem("color-theme");
-  //     if (typeof storedPrefs === "string") {
-  //       return storedPrefs;
-  //     }
-
-  //     const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  //     if (userMedia.matches) {
-  //       return "dark";
-  //     }
-  //   }
-
-  //   return "light";
-  // };
-
-  // const [theme, setTheme] = useState(getInitialTheme());
-  // const [isChecked, setIsChecked] = useState(false);
-
-  // const rawSetTheme = (theme: string) => {
-  //   const root = document.documentElement;
-  //   const isDark = theme === "dark";
-
-  //   root.classList.remove(isDark ? "light" : "dark");
-  //   root.classList.add(theme);
-
-  //   localStorage.setItem("color-theme", theme);
-  // };
-
-  // useEffect(() => {
-  //   rawSetTheme(theme);
-  //   setIsChecked(theme === "dark" ? true : false);
-  // }, [theme]);
-
-  // useEffect(() => {
-  //   const userPreference = getInitialTheme();
-  //   console.log(userPreference);
-
-  //   setTheme(userPreference);
-  // }, []);
-
-  // const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const isChecked = e.target.checked;
-
-  //   setTheme(isChecked ? "dark" : "light");
-  // };
-
   const getInitialTheme = () => {
     if (typeof window !== "undefined" && window.localStorage) {
       const storedPrefs = window.localStorage.getItem("color-theme");
@@ -108,7 +61,6 @@ const ButtonTheme: React.FC<Props> = ({ setTheme: setStorageTheme }) => {
 
   return (
     <label aria-checked="false" role="switch" className="switch">
-      {/* <input type="checkbox" checked={isChecked} onChange={toggleTheme} /> */}
       <input
         type="checkbox"
         checked={theme === "dark" ? true : false}

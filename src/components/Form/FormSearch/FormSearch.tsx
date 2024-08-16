@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@material-tailwind/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 interface SearchFormElements extends HTMLFormControlsCollection {
   search: HTMLInputElement;
@@ -9,14 +10,18 @@ interface SearchFormElements extends HTMLFormControlsCollection {
 
 const FormSearch = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [value, setValue] = useState(searchParams.get("query") || "");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const elements = e.currentTarget.elements as SearchFormElements;
-    const value = elements?.search.value;
+    const value = elements?.search.value.trim();
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("media_type", "movie");
+    params.set("query", value);
 
-    router.push(`/search?query=${value}`);
-    e.currentTarget.reset();
+    router.push(`/search?${params.toString()}`);
   };
 
   return (
@@ -30,6 +35,8 @@ const FormSearch = () => {
           label="search for films and tv show"
           className="text-black-800 dark:text-white text-md"
           name="search"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
       </div>
     </form>

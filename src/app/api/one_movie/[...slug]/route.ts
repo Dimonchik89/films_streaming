@@ -8,8 +8,6 @@ export async function GET(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const normalizePath = pathname.split("/").splice(3).join("/");
 
-  console.log("normalizePath", normalizePath);
-
   try {
     const data = await fetchData<MovieDetails | SeriesDetails>(
       `${normalizePath}`

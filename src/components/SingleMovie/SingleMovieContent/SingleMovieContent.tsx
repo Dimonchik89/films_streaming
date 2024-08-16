@@ -10,8 +10,6 @@ interface Props {
 }
 
 const SingleMovieContent: React.FC<Props> = ({ movie, media_type }) => {
-  console.log("movie", movie);
-
   return (
     <div>
       <div className="text-2xl capitalize font-bold text-black-800 dark:text-white">

@@ -9,17 +9,24 @@ import {
   MenuList,
   Typography,
 } from "@material-tailwind/react";
-import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-
-interface Props {
+import { setCurrentMoviesCategory } from "../../../store/movieCategory/moviesCategory";
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { connect, ConnectedProps } from "react-redux";
+import { AppDispatch } from "../../../store/store";
+interface Props extends Connector {
   label: string;
   basePath: string;
   subMenu: Genre[];
 }
 
-const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
+const NavListMenu: React.FC<Props> = ({
+  label,
+  basePath,
+  subMenu,
+  setCurrentMoviesCategory,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const router = useRouter();
 
@@ -35,13 +42,11 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
       key={id}
       className="!border-none !outline-none hover:!outline-none"
       onClick={() => {
+        setCurrentMoviesCategory(name);
         router.push(`${basePath}/${id}`);
       }}
     >
-      <p
-        className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200 capitalize"
-        // href={`${basePath}/${id}`}
-      >
+      <p className="mb-1 text-gray-800 dark:text-white hover:text-blue-200 dark:hover:text-blue-200 capitalize">
         {name}
       </p>
     </MenuItem>
@@ -90,4 +95,15 @@ const NavListMenu: React.FC<Props> = ({ label, basePath, subMenu }) => {
   );
 };
 
-export default NavListMenu;
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  setCurrentMoviesCategory: bindActionCreators(
+    setCurrentMoviesCategory,
+    dispatch
+  ),
+});
+
+const connector = connect(null, mapDispatchToProps);
+
+type Connector = ConnectedProps<typeof connector>;
+
+export default connector(NavListMenu);

@@ -25,7 +25,8 @@ const Carousel = () => {
     <div className="py-4">
       <Container>
         {isLoading ? (
-          <Spinner isLoading={isLoading} />
+          // <Spinner isLoading={isLoading} />
+          <></>
         ) : (
           <>
             <CarouselHead

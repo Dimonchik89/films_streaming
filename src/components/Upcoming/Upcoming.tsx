@@ -34,7 +34,8 @@ const Upcoming = () => {
   return (
     <div>
       {isLoading ? (
-        <Spinner isLoading={isLoading} />
+        // <Spinner isLoading={isLoading} />
+        <></>
       ) : (
         <>
           <h2 className="mb-3 text-xl font-bold text-black-800 dark:text-white">

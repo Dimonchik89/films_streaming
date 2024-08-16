@@ -8,8 +8,8 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Movie Page",
-  description: "Nev films",
+  title: "Only Films",
+  description: "New films",
 };
 
 export default function Home() {

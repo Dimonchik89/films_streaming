@@ -7,9 +7,7 @@ const Header = () => {
       <Container>
         <div className="py-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-gray-100 text-sm cursor-pointer">
-              пiдписатися
-            </h2>
+            <h2 className="text-gray-100 text-sm cursor-pointer w-5">logo</h2>
             <Link href="/">
               <h2 className="text-gray-100 text-xl uppercase">Only films</h2>
             </Link>

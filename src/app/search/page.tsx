@@ -1,4 +1,11 @@
-import { Layout } from "@/components";
+import { Container, Layout } from "@/components";
+import { SearchContainer } from "../../components/Search";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Latest movies",
+  description: "All latest movies",
+};
 
 const page = ({ searchParams }: { searchParams: { query: string } }) => {
   const { query } = searchParams;
@@ -7,7 +14,9 @@ const page = ({ searchParams }: { searchParams: { query: string } }) => {
 
   return (
     <Layout>
-      <h2>Search {query}</h2>
+      <Container>
+        <SearchContainer query={query} />
+      </Container>
     </Layout>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { Suspense } from "react";
-import { Container, Movie } from "..";
+import React from "react";
+import { Movie } from "..";
 import { getCategoryMovieFromSearchParams } from "../../service/helper";
 import { useGetMovieListQuery } from "../../store/api/moviesApi";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -56,7 +56,8 @@ const MainContent: React.FC<Props> = ({ lagreMovieContainer, media_type }) => {
         indicatorColor="primary"
         hideNavigation={true}
         page={Number(searchParams.get("page")) || 1}
-        totalPages={data?.total_pages}
+        totalPages={data?.total_pages! <= 500 ? data?.total_pages : 500}
+        s
         onChange={handleOnChange}
       />
     </div>

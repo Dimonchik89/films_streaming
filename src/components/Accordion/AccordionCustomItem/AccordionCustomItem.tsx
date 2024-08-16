@@ -1,12 +1,21 @@
+"use client";
+
 import { Genre } from "@/types/genre";
 import Link from "next/link";
-
-interface Props {
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { setCurrentMoviesCategory } from "../../../store/movieCategory/moviesCategory";
+import { connect, ConnectedProps } from "react-redux";
+import { AppDispatch } from "../../../store/store";
+interface Props extends Connector {
   el: Genre;
   basePath: string;
 }
 
-const AccordionCustomItem: React.FC<Props> = ({ el, basePath }) => {
+const AccordionCustomItem: React.FC<Props> = ({
+  el,
+  basePath,
+  setCurrentMoviesCategory,
+}) => {
   return (
     <Link
       key={el.id}
@@ -14,6 +23,7 @@ const AccordionCustomItem: React.FC<Props> = ({ el, basePath }) => {
       href={`${basePath}/${el.id}`}
       onClick={() => {
         document.querySelector("body")?.classList.remove("no-scroll");
+        setCurrentMoviesCategory(el.name);
       }}
     >
       {el.name}
@@ -21,4 +31,14 @@ const AccordionCustomItem: React.FC<Props> = ({ el, basePath }) => {
   );
 };
 
-export default AccordionCustomItem;
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  setCurrentMoviesCategory: bindActionCreators(
+    setCurrentMoviesCategory,
+    dispatch
+  ),
+});
+
+const connector = connect(null, mapDispatchToProps);
+type Connector = ConnectedProps<typeof connector>;
+
+export default connector(AccordionCustomItem);
