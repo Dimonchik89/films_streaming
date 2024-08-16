@@ -24,7 +24,7 @@ const MovieList: React.FC<Props> = ({
       } self-center sm:self-auto`}
     >
       {!movies?.length ? (
-        <h2 className="text-2xl font-bold text-black-800 dark:text-white">
+        <h2 className="text-center text-2xl font-bold text-black-800 dark:text-white">
           Not found
         </h2>
       ) : (

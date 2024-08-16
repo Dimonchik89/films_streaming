@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useGetSearchMovieListQuery } from "../../../store/api/moviesApi";
-import { ErrorComponent, MovieList, Spinner } from "../..";
+import { ErrorComponent, Movie, MovieList, Spinner } from "../..";
 import { v4 as uuidv4 } from "uuid";
 import Pagination from "materialui-pagination-component";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -33,7 +33,7 @@ const SearchContainer: React.FC<Props> = ({ query }) => {
 
   const buttons = data?.map((item) => (
     <button
-      className={`border-2 border-gray-800 dark:border-gray-200 text-black-800 dark:text-gray-200  rounded-2xl px-4 py-1 text-md font-bold ${
+      className={`border-2 border-gray-800 dark:border-gray-200 text-black-800 dark:text-gray-200  rounded-2xl px-4 py-1 text-sm md:text-md font-bold ${
         mediaType === item.media_type && "bg-blue-800 text-gray-200"
       }`}
       key={uuidv4()}
@@ -45,7 +45,7 @@ const SearchContainer: React.FC<Props> = ({ query }) => {
         router.push(`search?${params.toString()}`);
       }}
     >
-      {item.media_type}
+      {`${item.media_type} ${item.total_results || 0}`}
     </button>
   ));
 

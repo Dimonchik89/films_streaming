@@ -17,7 +17,7 @@ export type ResponseData<T> = {
   page: number;
   results: T;
   total_pages: number;
-  totalREsults: number;
+  total_results: number;
 };
 
 export interface ResponseSearch<T> extends ResponseData<T> {
