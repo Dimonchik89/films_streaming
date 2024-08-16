@@ -23,7 +23,13 @@ const MovieList: React.FC<Props> = ({
         lagreMovieContainer ? "movie-container__lagre" : "movie-container"
       } self-center sm:self-auto`}
     >
-      {content}
+      {!movies?.length ? (
+        <h2 className="text-2xl font-bold text-black-800 dark:text-white">
+          Not found
+        </h2>
+      ) : (
+        <>{content}</>
+      )}
     </div>
   );
 };
