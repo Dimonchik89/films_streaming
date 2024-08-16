@@ -32,7 +32,7 @@ const FormSearch = () => {
           onPointerEnterCapture={null}
           onPointerLeaveCapture={null}
           color="blue"
-          label="search for films and tv show"
+          label="Search"
           className="text-black-800 dark:text-white text-md"
           name="search"
           value={value}

@@ -30,8 +30,8 @@ const MovieItem: React.FC<Props> = ({ data, index, media_type }) => {
                   : "/images/movie-placeholder.png"
               }
               alt={`${data.id}`}
-              width={400}
-              height={600}
+              width={241}
+              height={342}
               style={{ objectFit: "cover" }}
             />
             <Image
