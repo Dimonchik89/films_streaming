@@ -18,7 +18,7 @@ const SingleMovieContent: React.FC<Props> = ({ movie, media_type }) => {
       <div className="mt-4">
         <div className="flex gap-4 flex-col md:flex-row items-center md:items-start">
           <Image
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`}
             alt={`${movie.id}`}
             width={200}
             height={300}

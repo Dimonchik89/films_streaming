@@ -30,7 +30,7 @@ const CarouselItem: React.FC<Props> = ({
         <div className="rounded-md overflow-hidden pb-1">
           <div className="image__wrapper">
             <Image
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`}
               alt={`${movie.id}`}
               width={140}
               height={240}
