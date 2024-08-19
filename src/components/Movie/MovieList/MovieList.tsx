@@ -21,7 +21,7 @@ const MovieList: React.FC<Props> = ({
     <div
       className={`${
         lagreMovieContainer ? "movie-container__lagre" : "movie-container"
-      } self-center sm:self-auto`}
+      } `}
     >
       {!movies?.length ? (
         <h2 className="text-center text-2xl font-bold text-black-800 dark:text-white">

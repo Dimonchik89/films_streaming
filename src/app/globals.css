@@ -90,12 +90,12 @@
 }
 
 .movie-container {
-  @apply grid gap-5;
-  grid-template-columns: repeat(auto-fit, minmax(166px, 1fr));
+  @apply grid gap-5 grid-cols-[repeat(auto-fill,minmax(120px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(166px,1fr))];
+  /* grid-template-columns: repeat(auto-fit, minmax(166px, 1fr)); */
   /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
 }
 
 .movie-container__lagre {
-  @apply grid gap-5;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  @apply grid gap-5 grid-cols-[repeat(auto-fill,minmax(120px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))];
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
 }

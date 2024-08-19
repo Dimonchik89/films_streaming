@@ -34,6 +34,10 @@ const config: Config = withMT({
     backgroundImage: {
       arrow: "url('/icons/arrow.png')",
     },
+    gridTemplateColumns: {
+      "auto-fit-166": "repeat(auto-fit, minmax(166px, 1fr))",
+      "auto-fit-120": "repeat(auto-fit, minmax(120px, 1fr))",
+    },
   },
   plugins: [],
 });
