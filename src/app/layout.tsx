@@ -28,7 +28,20 @@ export default function RootLayout({
     <Provider store={store}>
       <ThemeProvider>
         <html lang="en">
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className}>
+            <div className="hidden">
+              <a>
+                <img
+                  src="https://www.easycounter.com/counter.php?onlyfilms"
+                  alt="Web Site Hit Counter"
+                />
+              </a>
+              <br />
+              <a href="https://www.easycounter.com/">Free Web Counters</a>
+            </div>
+
+            {children}
+          </body>
         </html>
       </ThemeProvider>
     </Provider>
