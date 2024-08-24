@@ -19,40 +19,71 @@ const FormSearch = () => {
   const [startVoiceSearch, setStartVoiceSearch] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
+    if (typeof window !== "undefined" && annyang) {
+      annyang.addCommands({
+        "*text": function (text: string) {
+          // console.log("Пользователь сказал:", text);
+        },
+      });
+
+      annyang.addCallback("result", function (phrases: Array<string>) {
+        setValue(phrases[0]);
+        stop();
+      });
+
+      return () => {
+        annyang.abort();
+      };
     }
   }, []);
 
-  const commands = {
-    "say *text": (text: string) => {
-      console.log("text", text);
-
-      setValue(text);
-      setStartVoiceSearch(false);
-    },
-  };
-
-  annyang.addCommands(commands);
-
-  annyang.addCallback("result", function (phrases: any) {
-    setValue(phrases[0]);
-    stop();
-  });
-
   function speech() {
-    annyang.start();
-    setStartVoiceSearch(true);
+    if (typeof window !== "undefined" && annyang) {
+      annyang.start();
+      setStartVoiceSearch(true);
 
-    setTimeout(() => {
-      stop();
-    }, 7000);
+      setTimeout(() => {
+        stop();
+      }, 7000);
+    }
   }
 
   function stop() {
-    annyang.abort();
-    setStartVoiceSearch(false);
+    if (typeof window !== "undefined" && annyang) {
+      annyang.abort();
+      setStartVoiceSearch(false);
+    }
   }
+
+  // const commands = {
+  //   "say *text": (text: string) => {
+  //     console.log("text", text);
+
+  //     setValue(text);
+  //     setStartVoiceSearch(false);
+  //   },
+  // };
+
+  // annyang.addCommands(commands);
+
+  // annyang.addCallback("result", function (phrases: any) {
+  //   setValue(phrases[0]);
+  //   stop();
+  // });
+
+  // function speech() {
+  //   annyang.start();
+  //   setStartVoiceSearch(true);
+
+  //   setTimeout(() => {
+  //     stop();
+  //   }, 7000);
+  // }
+
+  // function stop() {
+  //   annyang.abort();
+  //   setStartVoiceSearch(false);
+  // }
 
   // -------------------------
 
