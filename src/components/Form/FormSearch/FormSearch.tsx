@@ -2,7 +2,7 @@
 
 import { Input } from "@material-tailwind/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import annyang from "annyang";
 import { MicrophoneIcon } from "@heroicons/react/24/solid";
 
@@ -17,6 +17,12 @@ const FormSearch = () => {
 
   // --------- voice search
   const [startVoiceSearch, setStartVoiceSearch] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+  }, []);
 
   const commands = {
     "say *text": (text: string) => {
@@ -38,15 +44,16 @@ const FormSearch = () => {
     annyang.start();
     setStartVoiceSearch(true);
 
-    // setTimeout(() => {
-    //   stop();
-    // }, 7000);
+    setTimeout(() => {
+      stop();
+    }, 7000);
   }
 
   function stop() {
     annyang.abort();
     setStartVoiceSearch(false);
   }
+
   // -------------------------
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
