@@ -3,7 +3,6 @@
 import { Input } from "@material-tailwind/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import annyang from "annyang";
 import { MicrophoneIcon } from "@heroicons/react/24/solid";
 
 interface SearchFormElements extends HTMLFormControlsCollection {
@@ -23,15 +22,6 @@ const FormSearch = () => {
 
   // --------- voice search
   // const [startVoiceSearch, setStartVoiceSearch] = useState(false);
-  // const [isClient, setIsClient] = useState(false);
-
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
-
-  // if (!isClient) {
-  //   return null;
-  // }
 
   // const commands = {
   //   "say *text": (text: string) => {
@@ -65,6 +55,47 @@ const FormSearch = () => {
 
   // -------------------------
 
+  // -------------------- test voice ---------------------
+  const [startVoiceSearch, setStartVoiceSearch] = useState(false);
+  const recordRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (recordRef.current) {
+      recordRef.current.stop();
+    }
+  }, []);
+
+  function startRecording() {
+    setStartVoiceSearch(true);
+
+    recordRef.current = new window.webkitSpeechRecognition();
+    recordRef.current.continuos = true;
+    recordRef.current.interimResult = true;
+    recordRef.current.onresult = (e: any) => {
+      const { transcript } = e.results[e.results.length - 1][0];
+      // if (e.results.isFinal) {
+      //   console.log("isFinal");
+
+      //   setValue(transcript);
+      //   setStartVoiceSearch(false);
+      // }
+
+      setValue(transcript);
+      setStartVoiceSearch(false);
+    };
+
+    recordRef.current.start();
+  }
+
+  function stopRecording() {
+    if (recordRef.current) {
+      recordRef.current.stop();
+      setStartVoiceSearch(false);
+    }
+  }
+
+  // -----------------------------------------
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const elements = e.currentTarget.elements as SearchFormElements;
@@ -89,6 +120,20 @@ const FormSearch = () => {
           name="search"
           value={value}
           onChange={(e) => setValue(e.target.value)}
+        />
+        <MicrophoneIcon
+          className={`${
+            startVoiceSearch
+              ? "text-red-500 microphone_animate"
+              : "text-black-800 dark:text-white "
+          } w-6 h-6 cursor-pointer`}
+          onClick={() => {
+            if (!startVoiceSearch) {
+              startRecording();
+            } else {
+              stopRecording();
+            }
+          }}
         />
         {/* <MicrophoneIcon
           className={`${

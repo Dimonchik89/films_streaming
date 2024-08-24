@@ -14,7 +14,6 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@tanstack/react-query": "^5.51.21",
     "@types/material-ui-pagination": "^1.0.8",
-    "annyang": "^2.6.1",
     "axios": "^1.7.3",
     "framer-motion": "^11.3.24",
     "materialui-pagination-component": "^1.1.12",
