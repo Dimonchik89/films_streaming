@@ -73,14 +73,14 @@ const FormSearch = () => {
     recordRef.current.interimResult = true;
     recordRef.current.onresult = (e: any) => {
       const { transcript } = e.results[e.results.length - 1][0];
-      // if (e.results.isFinal) {
-      //   console.log("isFinal");
-
-      //   setValue(transcript);
-      //   setStartVoiceSearch(false);
-      // }
 
       setValue(transcript);
+      setStartVoiceSearch(false);
+
+      chageparams(transcript);
+    };
+
+    recordRef.current.onend = (e: any) => {
       setStartVoiceSearch(false);
     };
 
@@ -100,6 +100,15 @@ const FormSearch = () => {
     e.preventDefault();
     const elements = e.currentTarget.elements as SearchFormElements;
     const value = elements?.search.value.trim();
+    chageparams(value);
+    // const params = new URLSearchParams(searchParams.toString());
+    // params.set("media_type", "movie");
+    // params.set("query", value);
+
+    // router.push(`/search?${params.toString()}`);
+  };
+
+  const chageparams = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("media_type", "movie");
     params.set("query", value);
