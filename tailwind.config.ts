@@ -22,6 +22,9 @@ const config: Config = withMT({
         800: "#060f13",
       },
       white: "#fff",
+      red: {
+        500: "#F5004F",
+      },
     },
     container: {
       center: true,

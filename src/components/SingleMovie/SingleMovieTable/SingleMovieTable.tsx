@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { MovieDetails } from "../../../types/movie";
 import { SeriesDetails } from "../../../types/series";
+import { normalizeDate } from "../../../service/helper";
 
 interface Props {
   movie: MovieDetails | SeriesDetails;
@@ -30,8 +32,8 @@ const SingleMovieTable: React.FC<Props> = ({ movie }) => {
         <td>
           <span className="text-black-800 dark:text-white font-semibold">
             {"release_date" in movie
-              ? movie?.release_date
-              : movie.first_air_date}
+              ? normalizeDate(movie?.release_date)
+              : normalizeDate(movie.first_air_date)}
           </span>
         </td>
       </tr>
