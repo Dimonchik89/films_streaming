@@ -2,12 +2,18 @@
 
 import { Input } from "@material-tailwind/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import annyang from "annyang";
 import { MicrophoneIcon } from "@heroicons/react/24/solid";
 
 interface SearchFormElements extends HTMLFormControlsCollection {
   search: HTMLInputElement;
+}
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+  }
 }
 
 const FormSearch = () => {
@@ -16,44 +22,16 @@ const FormSearch = () => {
   const [value, setValue] = useState(searchParams.get("query") || "");
 
   // --------- voice search
-  const [startVoiceSearch, setStartVoiceSearch] = useState(false);
+  // const [startVoiceSearch, setStartVoiceSearch] = useState(false);
+  // const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && annyang) {
-      annyang.addCommands({
-        "*text": function (text: string) {
-          // console.log("Пользователь сказал:", text);
-        },
-      });
+  // useEffect(() => {
+  //   setIsClient(true);
+  // }, []);
 
-      annyang.addCallback("result", function (phrases: Array<string>) {
-        setValue(phrases[0]);
-        stop();
-      });
-
-      return () => {
-        annyang.abort();
-      };
-    }
-  }, []);
-
-  function speech() {
-    if (typeof window !== "undefined" && annyang) {
-      annyang.start();
-      setStartVoiceSearch(true);
-
-      setTimeout(() => {
-        stop();
-      }, 7000);
-    }
-  }
-
-  function stop() {
-    if (typeof window !== "undefined" && annyang) {
-      annyang.abort();
-      setStartVoiceSearch(false);
-    }
-  }
+  // if (!isClient) {
+  //   return null;
+  // }
 
   // const commands = {
   //   "say *text": (text: string) => {
@@ -112,7 +90,7 @@ const FormSearch = () => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <MicrophoneIcon
+        {/* <MicrophoneIcon
           className={`${
             startVoiceSearch
               ? "text-red-500 microphone_animate"
@@ -125,7 +103,7 @@ const FormSearch = () => {
               stop();
             }
           }}
-        />
+        /> */}
       </div>
     </form>
   );
