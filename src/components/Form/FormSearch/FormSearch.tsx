@@ -77,7 +77,7 @@ const FormSearch = () => {
       setValue(transcript);
       setStartVoiceSearch(false);
 
-      chageparams(transcript);
+      // chageparams(transcript);
     };
 
     recordRef.current.onend = (e: any) => {
