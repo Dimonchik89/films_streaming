@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="bg-white dark:bg-gray-500">
       <Container>
         <div className="py-5">
-          <div className="flex items-center justify-center gap-5">
+          {/* <div className="flex items-center justify-center gap-5">
             <Image
               src={"/images/tmdb.svg"}
               alt="tmdb"
@@ -17,7 +17,7 @@ const Footer = () => {
               This product uses the TMDb API but is not endorsed or certified by
               TMDb.
             </p>
-          </div>
+          </div> */}
           <div className="flex flex-col items-center py-5">
             <h3 className="text-black-800 dark:text-gray-200 font-md">
               ONLY FILMS &copy;
