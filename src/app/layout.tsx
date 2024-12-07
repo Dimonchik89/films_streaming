@@ -8,7 +8,9 @@ import { Provider } from "react-redux";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import store from "../store/store";
-import { Suspense } from "react";
+
+import snowfall from "../scripts/snow";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const queryClient = new QueryClient();
+
+  useEffect(() => {
+    setTimeout(() => {
+      snowfall(window, document, undefined);
+
+      const snow = new window.Snowfall();
+    }, 2000);
+  }, []);
 
   return (
     <Provider store={store}>
