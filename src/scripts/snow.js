@@ -1,11 +1,7 @@
 /*!
  * Snowfall.js v1.1 (http://cople.github.io/Snowfall.js/)
  */
-export default function snowfall(
-  window: Window,
-  document: Document,
-  undefined: undefined
-) {
+export default function snowfall(window, document, undefined) {
   "use strict";
 
   var winWidth = window.innerWidth,
