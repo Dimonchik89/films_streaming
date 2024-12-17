@@ -1,7 +1,6 @@
 "use client";
 
 import { ThemeProvider } from "@material-tailwind/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 
 // import type {Metadata} from 'next';
@@ -24,14 +23,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const queryClient = new QueryClient();
 
   useEffect(() => {
-    setTimeout(() => {
+    let intervalId = setTimeout(() => {
       snowfall(window, document, undefined);
 
       const snow = new window.Snowfall();
     }, 2000);
+
+	return () => clearInterval(intervalId);
   }, []);
 
   return (

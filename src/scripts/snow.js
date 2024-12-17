@@ -5,8 +5,8 @@ export default function snowfall(window, document, undefined) {
   "use strict";
 
   var winWidth = window.innerWidth,
-    // winHeight = window.innerHeight,
-    winHeight = document.body.scrollHeight - 200,
+    winHeight = window.innerHeight,
+    // winHeight = document.body.scrollHeight - 200,
     defaultOptions = {
       minSize: 10,
       maxSize: 30,
@@ -87,8 +87,8 @@ export default function snowfall(window, document, undefined) {
   window.addEventListener(
     "resize",
     function () {
-      //   winHeight = window.innerHeight;
-      winHeight = document.body.scrollHeight - 200;
+        winHeight = window.innerHeight;
+    //   winHeight = document.body.scrollHeight - 200;
       winWidth = window.innerWidth;
     },
     false
