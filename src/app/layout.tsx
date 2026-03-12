@@ -23,17 +23,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // ------------------------ Snowfall
+  //   useEffect(() => {
+  //     let intervalId = setTimeout(() => {
+  //       snowfall(window, document, undefined);
 
-	// ------------------------ Snowfall
-  useEffect(() => {
-    let intervalId = setTimeout(() => {
-      snowfall(window, document, undefined);
+  //       const snow = new window.Snowfall();
+  //     }, 2000);
 
-      const snow = new window.Snowfall();
-    }, 2000);
-
-	return () => clearInterval(intervalId);
-  }, []);
+  // 	return () => clearInterval(intervalId);
+  //   }, []);
 
   return (
     <Provider store={store}>
